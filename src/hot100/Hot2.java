@@ -28,14 +28,16 @@ public class Hot2 {
 
         int i = 0;
 
-        while ( l1.next!=null ){
+        while ( l1!=null ){
             a = (int) (a + l1.val*Math.pow(10,i));
             i++;
+            l1 = l1.next;
         }
         i = 0;
-        while ( l2.next!=null ){
+        while ( l2!=null ){
             b = (int) (b + l1.val*Math.pow(10,i));
             i++;
+            l2 = l2.next;
         }
 
         ListNode head = new ListNode();

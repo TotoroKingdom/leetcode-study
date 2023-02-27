@@ -23,41 +23,34 @@ public class Hot2 {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int a = 0;
-        int b = 0;
+        ListNode head = new ListNode(0);
+        ListNode newList = head;
 
-        int i = 0;
+        int curr = 0;
 
-        while ( l1!=null ){
-            a = (int) (a + l1.val*Math.pow(10,i));
-            i++;
-            l1 = l1.next;
-        }
-        i = 0;
-        while ( l2!=null ){
-            b = (int) (b + l1.val*Math.pow(10,i));
-            i++;
-            l2 = l2.next;
-        }
+        while (l1 != null || l2 != null){
+            int x = l1 != null?l1.val:0;
+            int y = l2 != null?l2.val:0;
 
-        ListNode head = new ListNode();
-        ListNode curNode = head;
+            int sum = curr + x + y;
 
+            curr = sum/10;
+            newList.next = new ListNode(sum%10);
 
-        int sum = a + b;
+            newList = newList.next;
 
-        while (true){
-            int i1 = sum % 10;
-            ListNode newNode = new ListNode(i1);
-            curNode.next = newNode;
-            curNode = newNode;
+            if (l1 != null){
+                l1 = l1.next;
+            }
 
-            sum = sum / 10;
-            if (sum <= 0){
-                break;
+            if (l2 != null){
+                l2 = l2.next;
             }
         }
-        return head;
+        if (curr > 0){
+            newList.next = new ListNode(curr);
+        }
+        return head.next;
     }
 
 
